@@ -4,28 +4,20 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Frame;
-import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
 
-import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class recordWindow extends Frame{
+public class recordWindow extends JFrame{
 	JPanel myPanel = new JPanel();
     JLabel myLabel = new JLabel();
 	JComboBox myComboBox;
@@ -33,7 +25,7 @@ public class recordWindow extends Frame{
 	private int n;
 	private final int side=600;
 	private String[][][] sc;	
-	int lastRec,lastRecn,lastReci,newRec,newRecn,newReci;
+	int lastRec,lastRecn,lastReci;
 	public recordWindow(int nLast) throws IOException{
 		this(nLast,"",0,0,0);
 	}
@@ -68,9 +60,7 @@ public class recordWindow extends Frame{
 	private void read() throws IOException{
 		DataInputStream    fileIn = null;
 		try{
-			 fileIn = new DataInputStream(new FileInputStream("rec.txt"));
-			 String str;
-			 int score;
+			 fileIn = new DataInputStream(new FileInputStream("rec.g3072"));
 			 c = fileIn.readInt();
 			 sc = new String[10][c][3];	
 			 for(int i=3;i<=9;i++){
@@ -122,29 +112,10 @@ public class recordWindow extends Frame{
 		}
 		return false;
 	}
-	private void writeNew() throws IOException{
-		DataOutputStream  fileOut = null;
-		try{
-			fileOut = new DataOutputStream(new FileOutputStream("rec.txt"));
-			 fileOut.writeInt(10);
-			 for(int i=3;i<=9;i++){
-				 for(int u=0;u<10;u++){
-					fileOut.writeUTF("-пусто-");
-					fileOut.writeInt(0);
-					fileOut.writeInt(0);
-					fileOut.writeInt(0);
-				 }
-			 }
-		}finally {
-	         if (fileOut != null) {
-	        	 fileOut.close();
-	          }
-		}
-	}
 	private void write() throws IOException{
 		DataOutputStream  fileOut = null;
 		try{
-			fileOut = new DataOutputStream(new FileOutputStream("rec.txt"));
+			fileOut = new DataOutputStream(new FileOutputStream("rec.g3072"));
 			 fileOut.writeInt(c);
 			 for(int i=3;i<=9;i++){
 				 for(int u=0;u<c;u++){

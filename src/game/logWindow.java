@@ -1,14 +1,11 @@
 package game;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.Graphics;
-import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -17,14 +14,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.DataOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -35,7 +31,7 @@ public class logWindow extends JFrame{   /*Создаем подкласс logWindow  класса Fr
 	private final int side=600;
 	private final HashMap <Integer,Color> col = new HashMap<>();
 	JPanel myPanel;
-	Label myLabel;
+	JLabel myLabel;
 	JTextField myField;
 	JButton myButton;
 	public logWindow (){   /*Конструктор класса*/
@@ -75,7 +71,7 @@ public class logWindow extends JFrame{   /*Создаем подкласс logWindow  класса Fr
 		String[] items = {"3*3","4*4","5*5","6*6","7*7","8*8","9*9"};
 		JComboBox myComboBox = new JComboBox(items);
 		myComboBox.setBackground(Color.WHITE);
-		myLabel = new Label ("Ваш счет: 0. Количество шагов: 0"); /* Создаем текстовое поле и надпись в нем*/
+		myLabel = new JLabel ("Ваш счет: 0. Количество шагов: 0"); /* Создаем текстовое поле и надпись в нем*/
 		myLabel.setPreferredSize( new Dimension(330,30));
 		myButton = new JButton("Рекорды");
 		myButton.addMouseListener(new MouseListener(){
